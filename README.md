@@ -1,51 +1,8 @@
-# Ember-cli-vendor
+## Including files
 
-This README outlines the details of collaborating on this Ember application.
+I am trying to include additional arbitrary JS files to my final compiled app.js and vendor.js bundles but I can't get it working.
 
-A short introduction of this app could easily go here.
-
-## Prerequisites
-
-You will need the following things properly installed on your computer.
-
-* [Git](http://git-scm.com/)
-* [Node.js](http://nodejs.org/) (with NPM) and [Bower](http://bower.io/)
-
-## Installation
-
-* `git clone <repository-url>` this repository
-* change into the new directory
-* `npm install`
-* `bower install`
-
-## Running / Development
-
-* `ember server`
-* Visit your app at http://localhost:4200.
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* ember: http://emberjs.com/
-* ember-cli: http://www.ember-cli.com/
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
-
+* In my case I am trying to add the `vendor/imagesloaded.pkgd.js` file inside `vendor.js` (NOTE: I know this is not the way to grab vendor files as I can just use `app.import('vendor/imagesloaded.pkgd.js')` but I'm just using this as an example)
+* I grab the file using `pickFiles` and then add it to `app` using `app.toTree()`.
+* Run `ember build --environment production`
+* Notice `imagesloaded.pkgd.js` is fingerprinted and added to `dist` but it isn't, bundled with vendor.js or not minified.
